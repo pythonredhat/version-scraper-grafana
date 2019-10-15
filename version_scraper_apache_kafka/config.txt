@@ -1,2 +1,2 @@
 [test]
-url =  https://api.github.com/repos/kubernetes/kubernetes/releases/latest
+url =  https://kafka.apache.org/downloads
