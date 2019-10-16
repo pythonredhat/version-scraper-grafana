@@ -15,14 +15,20 @@ def main():
 
     kafka_release = soup.find_all('span')[0]
 
-    print(kafka_release['id'])
+    kafka_release_version = kafka_release['id']
 
     version_lord_page = requests.get(url=url_version_lord)
     
     json_data = json.loads(version_lord_page.text)
 
-    print(json_data)
-
+    if json_data['current_version'] == kafka_release_version:
+        print("All good in the hood!")
+    else:
+        print("Version Lord is not up to date with RHEL site")
+        data = {'current_version': kafka_release_version, 'software': 'Apache Kafka'}
+        payload = requests.put(url=url_version_lord, data=json.dumps(data), headers={'Content-Type': 'application/json'})
+        print(payload.status_code)
+        print(payload.content)
 
 if __name__ == "__main__":
     main()
