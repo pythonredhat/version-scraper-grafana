@@ -1,34 +1,12 @@
-import requests
-import json
-from bs4 import BeautifulSoup
-from configparser import ConfigParser
-from importlib import resources
+from get_latest_version_internet import get_latest_version_internet
+from get_latest_version_versionlord import get_latest_version_versionlord
+from versionlord_updater import versionlord_updater
 
 def main():
-    cfg = ConfigParser()
-    cfg.read_string(resources.read_text("version_scraper_apache_kafka", "config.txt"))
-    url_kafka = cfg.get("test", "url_kafka")
-    url_version_lord = cfg.get("test", "url_version_lord")
+    latest_version_internet = get_latest_version_internet()
+    latest_version_versionlord = get_latest_version_versionlord()
 
-    kafka_page = requests.get(url_kafka)
-    soup = BeautifulSoup(kafka_page.content, 'html.parser')
-
-    kafka_release = soup.find_all('span')[0]
-
-    kafka_release_version = kafka_release['id']
-
-    version_lord_page = requests.get(url=url_version_lord)
-    
-    json_data = json.loads(version_lord_page.text)
-
-    if json_data['current_version'] == kafka_release_version:
-        print("All good in the hood!")
-    else:
-        print("Version Lord is not up to date with RHEL site")
-        data = {'current_version': kafka_release_version, 'software': 'Apache Kafka'}
-        payload = requests.put(url=url_version_lord, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-        print(payload.status_code)
-        print(payload.content)
+    versionlord_updater(latest_version_internet, latest_version_versionlord)
 
 if __name__ == "__main__":
     main()
