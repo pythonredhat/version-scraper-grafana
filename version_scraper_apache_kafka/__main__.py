@@ -10,21 +10,6 @@ logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(mes
 
 
 def main():
-    cfg = ConfigParser()
-    cfg.read_string(resources.read_text("version_scraper_apache_kafka", "config.txt"))
-    url_kafka = cfg.get("test", "url_kafka")
-    url_version_lord = cfg.get("test", "url_version_lord")
-
-    kafka_page = requests.get(url_kafka)
-    soup = BeautifulSoup(kafka_page.content, 'html.parser')
-
-    kafka_release = soup.find_all('span')[0]
-
-    kafka_release_version = kafka_release['id']
-
-    version_lord_page = requests.get(url=url_version_lord)
-    
-    json_data = json.loads(version_lord_page.text)
 
     try:
         if json_data['current_version'] == kafka_release_version:
