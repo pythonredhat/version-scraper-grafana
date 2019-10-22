@@ -6,3 +6,7 @@
 2019-10-21 19:10:57,426:DEBUG:https://kafka.apache.org:443 "GET /downloads HTTP/1.1" 200 12506
 2019-10-21 19:10:57,497:DEBUG:Starting new HTTP connection (1): localhost:8000
 2019-10-21 19:10:57,520:DEBUG:http://localhost:8000 "GET /api/v1/version_lord/9 HTTP/1.1" 200 98
+2019-10-22 16:56:42,011:DEBUG:Starting new HTTPS connection (1): kafka.apache.org:443
+2019-10-22 16:56:42,508:DEBUG:https://kafka.apache.org:443 "GET /downloads HTTP/1.1" 200 12506
+2019-10-22 16:56:42,582:DEBUG:Starting new HTTP connection (1): localhost:8000
+2019-10-22 16:56:42,589:DEBUG:http://localhost:8000 "GET /api/v1/version_lord/9 HTTP/1.1" 200 98

@@ -1,27 +1,12 @@
-import requests
-import json
-from bs4 import BeautifulSoup
-from configparser import ConfigParser
-from importlib import resources
-
-import logging
-
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/test.log")
-
+from get_latest_version_internet import get_latest_version_internet
+from get_latest_version_versionlord import get_latest_version_versionlord
+from versionlord_updater import versionlord_updater
 
 def main():
+    latest_version_internet = get_latest_version_internet()
+    latest_version_versionlord = get_latest_version_versionlord()
 
-    try:
-        if json_data['current_version'] == kafka_release_version:
-            print("All good in the hood!") 
-        else:
-            print("Version Lord is not up to date with RHEL site")
-            data = {'current_version': kafka_release_version, 'software': 'Apache Kafka'}
-            payload = requests.put(url=url_version_lord, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-            logging.debug(payload.status_code)
-            logging.debug(payload.content)
-    except Exception as ex:
-        logging.exception('caught an error')
+    versionlord_updater(latest_version_internet, latest_version_versionlord)
 
 if __name__ == "__main__":
     main()
