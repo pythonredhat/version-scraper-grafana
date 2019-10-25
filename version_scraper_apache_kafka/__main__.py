@@ -4,6 +4,7 @@ from versionlord_updater import versionlord_updater
 
 def main():
     latest_version_internet = get_latest_version_internet()
+    
     latest_version_versionlord = get_latest_version_versionlord()
 
     versionlord_updater(latest_version_internet, latest_version_versionlord)
