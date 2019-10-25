@@ -1,3 +1,4 @@
 *.pyc
 .vscode/
 *.log
+version_scraper_apache_kafka/__pycache__
