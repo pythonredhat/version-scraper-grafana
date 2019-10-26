@@ -23,16 +23,14 @@ def get_latest_version_internet():
         print(e)
         sys.exit(1)
 
-    soup = BeautifulSoup(kafka_page.content, 'html.parser')
-
-    kafka_release = soup.find_all('span')[0]
-
     try:
+        soup = BeautifulSoup(kafka_page.content, 'html.parser')
+        kafka_release = soup.find_all('span')[0]
         latest_version_internet = kafka_release['id']
     except TypeError as e:
-        logging.error("Object type is incorrect")
+        logging.error("Object data type is incorrect")
         logging.exception(e)
-        print("Object type is incorrect")
+        print("Object data type is incorrect")
         print(e)
         sys.exit(1)
     except KeyError as e:
@@ -41,8 +39,15 @@ def get_latest_version_internet():
         print("Attempting to scrape a key in dictionary that does not exist")
         print(e)
         sys.exit(1)
+    except AttributeError as e:
+        logging.error("Attempting to access an invalid attribute of an object")
+        logging.exception(e)
+        print("Attempting to access an invalid attribute of an object")
+        print(e)
+        sys.exit(1)
 
     print(latest_version_internet)
+    logging.debug(f"Latest version of {software} on the internet is {latest_version_internet}")
     return latest_version_internet
 
 if __name__ == "__main__":
