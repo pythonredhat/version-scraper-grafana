@@ -47,7 +47,7 @@ def get_latest_version_internet():
         sys.exit(1)
 
     print(latest_version_internet)
-    logging.debug(f"Latest version of {software} is {latest_version_internet}")
+    logging.debug(f"Latest version of {software} on the internet is {latest_version_internet}")
     return latest_version_internet
 
 if __name__ == "__main__":
