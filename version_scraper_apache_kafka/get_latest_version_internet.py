@@ -4,7 +4,7 @@ from .config import *
 import logging
 import sys
 
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="/tmp/logs/scraper.log")
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/scraper.log")
 
 def get_latest_version_internet():
 

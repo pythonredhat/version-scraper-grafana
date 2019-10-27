@@ -5,7 +5,7 @@ import json
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="/tmp/logs/test.log")
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/test.log")
 
 
 def versionlord_updater(latest_version_internet, latest_version_versionlord):
