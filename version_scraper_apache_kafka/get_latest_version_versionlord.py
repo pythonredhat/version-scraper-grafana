@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-from config import *
+from .config import *
 import json
 
 def get_latest_version_versionlord():
+
     version_lord_page = requests.get(url=url_version_lord)
     
     json_data = json.loads(version_lord_page.text)
