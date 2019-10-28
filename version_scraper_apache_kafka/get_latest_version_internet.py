@@ -23,11 +23,19 @@ def connect_internet(url):
         print(e)
         sys.exit(1)
 
-def parse(page):
+    return kafka_page
+
+def parse_html(page, mode="production"):
 
     try:
-        #soup = BeautifulSoup(page.content, 'html.parser')
-        soup = BeautifulSoup(page, 'html.parser')
+        if mode == "test":
+            soup = BeautifulSoup(page, 'html.parser')
+        elif mode == "production":
+            soup = BeautifulSoup(page.content, 'html.parser')
+        else:
+            print("Only valid function modes are test and production")
+            logging.error("Only valid function modes are test and production")
+            sys.exit(1)
         kafka_release = soup.find_all('span')[0]
         latest_version_internet = kafka_release['id']
     except TypeError as e:
@@ -54,4 +62,5 @@ def parse(page):
     return latest_version_internet
 
 if __name__ == "__main__":
-    get_latest_version_internet()
+    connect_internet(url)
+    parse_html(page)
