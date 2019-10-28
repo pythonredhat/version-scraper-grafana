@@ -6,10 +6,10 @@ import sys
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/scraper.log")
 
-def get_latest_version_internet():
+def connect_internet(url):
 
     try:
-        kafka_page = requests.get(url_kafka)
+        kafka_page = requests.get(url)
     except requests.ConnectionError as e:
         logging.error(f"Unable to connect to the {software} website")
         logging.exception(e)
@@ -23,8 +23,11 @@ def get_latest_version_internet():
         print(e)
         sys.exit(1)
 
+def parse(page):
+
     try:
-        soup = BeautifulSoup(kafka_page.content, 'html.parser')
+        #soup = BeautifulSoup(page.content, 'html.parser')
+        soup = BeautifulSoup(page, 'html.parser')
         kafka_release = soup.find_all('span')[0]
         latest_version_internet = kafka_release['id']
     except TypeError as e:
