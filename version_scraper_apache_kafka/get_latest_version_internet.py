@@ -6,10 +6,10 @@ import sys
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/scraper.log")
 
-def get_latest_version_internet():
+def connect_internet(url):
 
     try:
-        kafka_page = requests.get(url_kafka)
+        kafka_page = requests.get(url)
     except requests.ConnectionError as e:
         logging.error(f"Unable to connect to the {software} website")
         logging.exception(e)
@@ -23,8 +23,19 @@ def get_latest_version_internet():
         print(e)
         sys.exit(1)
 
+    return kafka_page
+
+def parse_html(page, mode="production"):
+
     try:
-        soup = BeautifulSoup(kafka_page.content, 'html.parser')
+        if mode == "test":
+            soup = BeautifulSoup(page, 'html.parser')
+        elif mode == "production":
+            soup = BeautifulSoup(page.content, 'html.parser')
+        else:
+            print("Only valid function modes are test and production")
+            logging.error("Only valid function modes are test and production")
+            sys.exit(1)
         kafka_release = soup.find_all('span')[0]
         latest_version_internet = kafka_release['id']
     except TypeError as e:
@@ -51,4 +62,5 @@ def get_latest_version_internet():
     return latest_version_internet
 
 if __name__ == "__main__":
-    get_latest_version_internet()
+    connect_internet(url)
+    parse_html(page)
