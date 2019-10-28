@@ -8,14 +8,15 @@ TESTDATA_FILENAME = os.path.join(os.path.dirname(__file__), 'data/kafka.html')
 class MyTest(unittest.TestCase):
 
     def setUp(self):
-        self.testdata = open(TESTDATA_FILENAME).read()
+        self.testfile = open(TESTDATA_FILENAME)
+        self.testdata = self.testfile.read()
 
-    def test_get_latest_version_internet(self):
+    def test_parser(self):
         testversion = parse(self.testdata)
         self.assertEqual(testversion, "2.3.1")
 
-    #def tearDown(self):
-     #   self.testdata.close()
+    def tearDown(self):
+        self.testfile.close()
 
 if __name__ == "__main__":
     unittest.main()
