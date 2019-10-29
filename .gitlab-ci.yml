@@ -13,3 +13,7 @@ unittest:
   stage: Test
   script:
   - python -m unittest discover
+  - coverage report -m
+  - coverage-badge
+  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+
