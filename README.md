@@ -16,7 +16,7 @@ https://stackoverflow.com/questions/45830856/running-a-module-in-a-package-impor
 ### coverage.py commands
 ```bash
 #run coverage on multiple modules
-coverage.py run -m unittest discover
+coverage run -m unittest discover
 #get the report
 coverage report -m
 #produce the html report, this will create an html folder in the directory, in there open index.html in browser
