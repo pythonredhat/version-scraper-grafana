@@ -1,6 +1,6 @@
 *.pyc
 .vscode/
 *.log
-version_scraper_apache_kafka/__pycache__
+version_scraper_grafana/__pycache__
 .coverage
 htmlcov/
