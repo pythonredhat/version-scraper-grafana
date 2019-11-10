@@ -21,3 +21,9 @@ coverage run -m unittest discover
 coverage report -m
 #produce the html report, this will create an html folder in the directory, in there open index.html in browser
 coverage html
+```
+
+### how to setup Mock for testing external APIs:
+```bash
+https://stackoverflow.com/questions/50157543/unittest-django-mock-external-api-what-is-proper-way
+```
