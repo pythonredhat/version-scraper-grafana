@@ -1,0 +1,41 @@
+{
+    "url": "https://api.github.com/repos/grafana/grafana/releases/21262427",
+    "assets_url": "https://api.github.com/repos/grafana/grafana/releases/21262427/assets",
+    "upload_url": "https://uploads.github.com/repos/grafana/grafana/releases/21262427/assets{?name,label}",
+    "html_url": "https://github.com/grafana/grafana/releases/tag/v6.4.4",
+    "id": 21262427,
+    "node_id": "MDc6UmVsZWFzZTIxMjYyNDI3",
+    "tag_name": "v6.4.4",
+    "target_commitish": "master",
+    "name": "v6.4.4",
+    "draft": "false",
+    "author": {
+      "login": "papagian",
+      "id": 1632407,
+      "node_id": "MDQ6VXNlcjE2MzI0MDc=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1632407?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/papagian",
+      "html_url": "https://github.com/papagian",
+      "followers_url": "https://api.github.com/users/papagian/followers",
+      "following_url": "https://api.github.com/users/papagian/following{/other_user}",
+      "gists_url": "https://api.github.com/users/papagian/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/papagian/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/papagian/subscriptions",
+      "organizations_url": "https://api.github.com/users/papagian/orgs",
+      "repos_url": "https://api.github.com/users/papagian/repos",
+      "events_url": "https://api.github.com/users/papagian/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/papagian/received_events",
+      "type": "User",
+      "site_admin": "false"
+    },
+    "prerelease": "false",
+    "created_at": "2019-11-06T13:50:42Z",
+    "published_at": "2019-11-06T17:00:55Z",
+    "assets": [
+  
+    ],
+    "tarball_url": "https://api.github.com/repos/grafana/grafana/tarball/v6.4.4",
+    "zipball_url": "https://api.github.com/repos/grafana/grafana/zipball/v6.4.4",
+    "body": "[Download Page](https://grafana.com/grafana/download/6.4.4)\r\n[What's New Highlights](https://grafana.com/docs/guides/whats-new-in-v6-4/)\r\n[Release Notes](https://community.grafana.com/t/release-notes-v-6-4-x/21088)\r\n\r\n### Bug Fixes\r\n* **DataLinks**: Fix blur issues. [#19883](https://github.com/grafana/grafana/pull/19883), [@aocenas](https://github.com/aocenas)\r\n* **Docker**: Makes it possible to parse timezones in the docker image. [#20081](https://github.com/grafana/grafana/pull/20081), [@xlson](https://github.com/xlson)\r\n* **LDAP**: All LDAP servers should be tried even if one of them returns a connection error. [#20077](https://github.com/grafana/grafana/pull/20077), [@jongyllen](https://github.com/jongyllen)\r\n* **LDAP**: No longer shows incorrectly matching groups based on role in debug page. [#20018](https://github.com/grafana/grafana/pull/20018), [@xlson](https://github.com/xlson)\r\n* **Singlestat**: Fix no data / null value mapping . [#19951](https://github.com/grafana/grafana/pull/19951), [@ryantxu](https://github.com/ryantxu)"
+  }
