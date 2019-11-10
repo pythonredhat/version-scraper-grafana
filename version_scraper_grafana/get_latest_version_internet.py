@@ -6,11 +6,12 @@ import json
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s", filename="./logs/scraper.log")
 
-def get_latest_version_internet(url):
+def get_latest_version_internet():
 
     try:
         response = requests.get(url=url_github_api)
-        json_data = json.loads(response.text)
+        json_data = response.json()
+        #json_data = json.loads(response.text)
         latest_version_internet = (json_data["name"])
     except requests.ConnectionError as e:
         logging.error(f"Unable to connect to Github")
@@ -30,4 +31,4 @@ def get_latest_version_internet(url):
     return latest_version_internet
 
 if __name__ == "__main__":
-    get_latest_version_internet("https://api.github.com/repos/grafana/grafana/releases/latest")
+    get_latest_version_internet()

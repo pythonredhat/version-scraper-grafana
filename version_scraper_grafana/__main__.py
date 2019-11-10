@@ -5,7 +5,7 @@ from .config import *
 
 def main():
 
-    latest_version_internet = get_latest_version_internet(url_github_api)
+    latest_version_internet = get_latest_version_internet()
     
     latest_version_versionlord = get_latest_version_versionlord()
 
