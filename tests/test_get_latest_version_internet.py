@@ -10,31 +10,36 @@ from version_scraper_grafana.get_latest_version_internet import get_latest_versi
 
 class MyTest(unittest.TestCase):
     
-    @mock.patch('version_scraper_grafana.get_latest_version_internet.requests.get')
-    def test_getting_internet_version_when_response_ok(self, mock_get):
-        #define new mock object
-        mock_response = mock.Mock()
+    def test_getting_internet_version_when_response_ok(self):
+        
+        #define the patch for requests.get method
+        mock_get_patcher = patch('version_scraper_grafana.get_latest_version_internet.requests.get')
+
         #define response data from github
         data = {"name": "6.0.0"}
 
-        #define response data for my Mock object
-        mock_response.json.return_value = data
-        mock_response.status_code = 200
+        #start the patch
+        mock_get = mock_get_patcher.start()
 
-        #define response data for the fake API
-        mock_get.return_value = mock_response 
+        #define response data for my Mock object
+        mock_get.return_value = Mock(status_code = 200)
+        mock_get.return_value.json.return_value = data
 
         #call regular function
-        result = get_latest_version_internet()
+        response = get_latest_version_internet()
 
-        self.assertEqual(result, "6.0.0")
-        #need to work on status code
-        #self.assertEqual(result.status_code, 200)
+        #stop the patch
+        mock_get_patcher.stop()
 
+        #assert the request-response cycle completed successfully
+        self.assertEqual(response, "6.0.0")
 
 #main link i am working off for code above
 #https://stackoverflow.com/questions/50157543/unittest-django-mock-external-api-what-is-proper-way
 
+
+###link i am working off to improve/simplify code
+#https://auth0.com/blog/mocking-api-calls-in-python/
 
 if __name__ == "__main__":
     unittest.main()

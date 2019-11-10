@@ -10,9 +10,12 @@ def get_latest_version_internet():
 
     try:
         response = requests.get(url=url_github_api)
-        json_data = response.json()
-        #json_data = json.loads(response.text)
-        latest_version_internet = (json_data["name"])
+        if response.status_code == 200:
+            json_data = response.json()
+            #json_data = json.loads(response.text)
+            latest_version_internet = (json_data["name"])
+        else:
+            return None
     except requests.ConnectionError as e:
         logging.error(f"Unable to connect to Github")
         logging.exception(e)
