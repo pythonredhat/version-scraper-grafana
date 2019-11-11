@@ -34,17 +34,37 @@ class MyTest(unittest.TestCase):
         #assert the request-response cycle completed successfully
         self.assertEqual(response, "6.0.0")
 
-#main link i am working off for code above
-#https://stackoverflow.com/questions/50157543/unittest-django-mock-external-api-what-is-proper-way
+    def test_getting_internet_version_when_response_no_ok(self):
+        
+        #define the patch for requests.get method
+        mock_get_patcher = patch('version_scraper_grafana.get_latest_version_internet.requests.get')
 
+        #define response data from github
+        data = {"name": "6.0.0"}
 
-###link i am working off to improve/simplify code
-#https://auth0.com/blog/mocking-api-calls-in-python/
+        #start the patch
+        mock_get = mock_get_patcher.start()
+
+        #define response data for my Mock object
+        mock_get.return_value = Mock(status_code = 500)
+        mock_get.return_value.json.return_value = data
+
+        #call regular function
+        response = get_latest_version_internet()
+
+        #stop the patch
+        mock_get_patcher.stop()
+
+        #assert the request-response cycle completed successfully
+        self.assertIsNone(response)
 
 if __name__ == "__main__":
     unittest.main()
 
+
+
 '''
+workflow:
 Given:
     some sample html (DONE)
 
@@ -53,4 +73,15 @@ When:
 
 Then:
     response is equal to 2.3.1 (DONE)
+'''
+
+'''
+unit testing links:
+main link i am working off for code above
+https://stackoverflow.com/questions/50157543/unittest-django-mock-external-api-what-is-proper-way
+
+link i am working off to improve/simplify code
+https://auth0.com/blog/mocking-api-calls-in-python/
+
+https://realpython.com/python-mock-library/
 '''
